@@ -1,0 +1,587 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #1a0005, #080002, #000000);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Top Announcement Bar */
+.top-bar {
+  background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+  color: #000;
+  text-align: center;
+  padding: 8px 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Navbar Navigation */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d0003;
+  padding: 18px 50px;
+  border-bottom: 2px solid #ffd700;
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  display: flex;
+  align-items: center;
+}
+
+/* S.T Glowing Animation */
+.logo-st {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  -webkit-background-clip: text;
+   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+  animation: goldPulse 2.5s infinite alternate ease-in-out;
+}
+
+.logo-jewelers {
+  font-size: 1.1rem;
+  color: #fcf6ba;
+  letter-spacing: 4px;
+  margin-left: 8px;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+}
+
+@keyframes goldPulse {
+  0% {
+    filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.4));
+    transform: scale(1);
+  }
+  100% {
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
+    transform: scale(1.03);
+  }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #fcf6ba;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.9);
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(26, 0, 5, 0.9)), url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1600') center/cover no-repeat;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3.2rem;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  -webkit-background-clip: text;
+   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.5));
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #fcf6ba;
+}
+
+/* Features / Fast Delivery Section */
+.features-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 20px;
+  background: rgba(13, 0, 3, 0.9);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.feature-item {
+  text-align: center;
+  color: #fcf6ba;
+}
+
+.feature-item i {
+  font-size: 2.2rem;
+  color: #ffd700;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+.feature-item h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: #ffd700;
+}
+
+.feature-item p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
+  -webkit-background-clip: text;
+   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 45px 0 30px;
+  font-size: 2.3rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
+}
+
+/* Category Grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 20px 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cat-card {
+  background: #120004;
+  border: 1px solid #ffd700;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fcf6ba;
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+}
+
+.cat-card:hover {
+  background: linear-gradient(135deg, #ffd700, #fcf6ba);
+  color: #000;
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  font-weight: bold;
+}
+
+/* Product Grid & Flip Card Animation */
+.products-section {
+  padding: 30px 40px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 350px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  border: 1px solid #ffd700;
+  box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.2);
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background-color: #0d0003;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background: linear-gradient(145deg, #180005, #080002);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.flip-card-back h3 {
+  font-family: 'Cinzel', serif;
+  color: #ffd700;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.flip-card-back .price {
+  font-size: 1.3rem;
+  color: #fcf6ba;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Shining Gold Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #ffd700);
+  background-size: 200% 200%;
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+.btn-primary:hover {
+  background-position: right center;
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #080002;
+  border-top: 1px solid #ffd700;
+  margin-top: 60px;
+  color: #fcf6ba;
+  font-size: 0.9rem;
+}
+/* ==========================================
+   Cart & Checkout Section Styles
+   ========================================== */
+
+.cart-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.cart-heading {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
+  -webkit-background-clip: text;
+   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cart-box, .checkout-box, .summary-box {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  color: #ffd700;
+  font-family: 'Cinzel', serif;
+}
+
+.btn-remove {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-remove:hover {
+  background: #c0392b;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ccc;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  background: #222;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.payment-option-card {
+  background: #222;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #333;
+  margin-bottom: 8px;
+}
+
+.summary-box h3 {
+  color: #ffd700;
+  font-family: 'Cinzel', serif;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 1.1rem;
+}
+
+.total-line {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #ffd700;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+.btn-checkout {
+  width: 100%;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+  color: #000;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.btn-checkout:hover {
+  opacity: 0.9;
+}
+/* Welcome Section Styles */
+.welcome-section {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.welcome-title {
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+/* Features Section Size Adjustments */
+.features-section {
+  max-width: 800px; /* Size chota karne ke liye */
+  margin: 30px auto 40px auto;
+  padding: 0 15px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px; /* Boxes ke darmiyan gap kam kiya */
+}
+
+.feature-card {
+  background: #1a1a1a;
+  padding: 15px 12px; /* Padding kam karke box chota kiya */
+  border-radius: 8px;
+  border: 1px solid #bf953f44;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: #ffd700;
+  transform: translateY(-3px);
+}
+
+.feature-icon {
+  font-size: 1.5rem; /* Icon size chota */
+  display: block;
+  margin-bottom: 6px;
+}
+
+.feature-card h3 {
+  color: #ffd700;
+  font-family: 'Cinzel', serif;
+  margin-bottom: 5px;
+  font-size: 0.95rem; /* Heading text chota */
+}
+
+.feature-card p {
+  color: #aaa;
+  font-size: 0.8rem; /* Paragraph text chota */
+  line-height: 1.3;
+}
+
+/* Hero Text Animation - Smooth Flip Down */
+.hero h1 {
+  perspective: 1000px;
+  animation: flipDownEffect 1s ease-out forwards;
+  transform-origin: top center;
+  backface-visibility: hidden;
+  background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  opacity: 0;
+  animation: fadeInSubtle 1s ease-out 0.5s forwards;
+}
+
+/* Flip Down Animation Rules */
+@keyframes flipDownEffect {
+  0% {
+    opacity: 0;
+    transform: rotateX(-70deg) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg) translateY(0);
+  }
+}
+
+/* Subtitle Fade In Rules */
+@keyframes fadeInSubtle {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Add to Cart Button Gold Styling */
+.add-to-cart-btn {
+    background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
+    color: #000000;
+    border: none;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(191, 149, 63, 0.4);
+    opacity: 0.9;
+}

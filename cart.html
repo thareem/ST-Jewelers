@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart & Checkout | S.T Jewelers</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .cart-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .cart-heading {
+      text-align: center;
+      color: #d4af37;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .cart-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cart-box, .checkout-box, .summary-box {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+
+    th {
+      color: #d4af37;
+    }
+
+    .btn-remove {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      background: #222;
+      border: 1px solid #444;
+      color: #fff;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .payment-option-card {
+      background: #222;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #333;
+      margin-bottom: 8px;
+    }
+
+    .summary-box h3 {
+      color: #d4af37;
+      border-bottom: 1px solid #333;
+      padding-bottom: 10px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+
+    .total-line {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #d4af37;
+      border-top: 1px solid #333;
+      padding-top: 15px;
+    }
+
+    .btn-checkout {
+      width: 100%;
+      background: #d4af37;
+      color: #000;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    .btn-checkout:hover {
+      background: #f39c12;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart-container">
+    <h1 class="cart-heading">Your Shopping Cart</h1>
+
+    <div class="cart-layout">
+      <!-- Left Section -->
+      <div class="left-section">
+        <div class="cart-box">
+          <h3 style="color: #d4af37; margin-bottom: 15px;">Cart Items</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="cart-items-body">
+              <!-- Dynamic Items Will Show Here -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="checkout-box">
+          <h3 style="color: #d4af37; margin-bottom: 15px;">Customer & Delivery Details</h3>
+          <form id="checkout-form">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="cust-name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="cust-phone" placeholder="e.g. 03001234567" required>
+            </div>
+
+            <div class="form-group">
+              <label>Complete Delivery Address</label>
+              <textarea id="cust-address" rows="3" placeholder="House no, Street, Area, City" required></textarea>
+            </div>
+
+            <!-- Payment Options Section -->
+            <div class="form-group">
+              <label style="color: #d4af37; font-weight: bold; margin-bottom: 10px;">Select Payment Method:</label>
+              
+              <label class="payment-option-card">
+               <input type="radio" name="payment_method" value="cod" checked> Cash on Delivery
+                💵 Cash on Delivery (+PKR 200 Delivery Fee)
+              </label>
+
+              <label class="payment-option-card">
+               <input type="radio" name="payment_method" value="online"> Online Payment
+                📱 JazzCash / EasyPaisa
+              </label>
+
+              <label class="payment-option-card">
+                <input type="radio" name="payment" value="Card" onclick="togglePaymentDetails('card')"> 
+                💳 Credit / Debit Card
+              </label>
+
+              <!-- JazzCash/EasyPaisa Info Box -->
+              <div id="online-details" style="display: none; background: #252525; padding: 15px; border-radius: 5px; margin-top: 10px; border: 1px solid #d4af37;">
+                <p style="margin: 0 0 8px 0; color: #d4af37;"><strong>Account Details for Transfer:</strong></p>
+                <p style="margin: 2px 0;">Easypaisa / JazzCash: <strong>0300-1234567</strong></p>
+                <p style="margin: 2px 0;">Account Title: <strong>S.T Jewelers</strong></p>
+                <div style="margin-top: 10px;">
+                  <label>Transaction TRX ID / Reference Number:</label>
+                  <input type="text" id="trx-id" placeholder="Enter TRX ID after sending payment">
+                </div>
+              </div>
+
+              <!-- Card Info Box -->
+              <div id="card-details" style="display: none; background: #252525; padding: 15px; border-radius: 5px; margin-top: 10px; border: 1px solid #d4af37;">
+                <div style="margin-bottom: 8px;">
+                  <label>Card Number:</label>
+                  <input type="text" placeholder="XXXX - XXXX - XXXX - XXXX">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                  <div style="flex: 1;">
+                    <label>Expiry:</label>
+                    <input type="text" placeholder="MM/YY">
+                  </div>
+                  <div style="flex: 1;">
+                    <label>CVC:</label>
+                    <input type="text" placeholder="123">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Section: Order Summary -->
+      <div class="right-section">
+       <div class="summary-box">
+    <h3>Order Summary</h3>
+    <div class="summary-line">
+        <span>Subtotal:</span>
+        <span id="cart-subtotal">PKR 0</span>
+    </div>
+    <div class="summary-line">
+        <span>Delivery Charges:</span>
+        <span id="cart-delivery-fee">PKR 200</span>
+    </div>
+    <div class="summary-line total-line">
+        <span>Total Bill:</span>
+        <span id="cart-total-price">PKR 200</span>
+    </div>
+</div>
+          <button type="button" class="btn-checkout" onclick="placeOrder()">Confirm & Place Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  // Same localStorage key as your script.js
+ function renderCart() {
+    let cart = JSON.parse(localStorage.getItem('st_jewelers_cart')) || [];
+    let cartTable = document.getElementById('cart-items-body'); // Ya aapka container ID
+    let subtotal = 0;
+
+    if (!cartTable) return;
+
+    cartTable.innerHTML = '';
+
+    cart.forEach((item, index) => {
+        let itemPrice = Number(item.price) || 0;
+        subtotal += itemPrice;
+
+        cartTable.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>PKR ${itemPrice.toLocaleString()}</td>
+                <td><button onclick="removeFromCart(${index})" class="remove-btn">Remove</button></td>
+            </tr>
+        `;
+    });
+
+    let delivery = subtotal > 0 ? 200 : 0;
+    let total = subtotal + delivery;
+
+    document.getElementById('subtotal').innerText = `PKR ${subtotal.toLocaleString()}`;
+    document.getElementById('total-bill').innerText = `PKR ${total.toLocaleString()}`;
+}
+
+  function loadCart() {
+    let cart = getCart();
+    let cartTable = document.getElementById('cart-items');
+    let subtotal = 0;
+
+    cartTable.innerHTML = '';
+
+    if (cart.length === 0) {
+      cartTable.innerHTML = '<tr><td colspan="3" style="text-align:center; padding: 20px; color: #888;">Your cart is empty!</td></tr>';
+    } else {
+      cart.forEach((item, index) => {
+        let itemPrice = parseInt(item.price) || 0;
+        subtotal += itemPrice;
+        cartTable.innerHTML += `
+          <tr>
+            <td>
+              ${item.imageSrc ? `<img src="${item.imageSrc}" style="width:40px; height:40px; vertical-align:middle; margin-right:8px; border-radius:4px;">` : ''}
+              ${item.name}
+            </td>
+            <td>PKR ${itemPrice}</td>
+            <td><button class="btn-remove" onclick="removeItem(${index})">Remove</button></td>
+          </tr>
+        `;
+      });
+    }
+
+    document.getElementById('subtotal-price').innerText = 'PKR ' + subtotal;
+    let total = subtotal > 0 ? subtotal + 200 : 0;
+    document.getElementById('total-price').innerText = 'PKR ' + total;
+  }
+
+  function removeItem(index) {
+    let cart = getCart();
+    cart.splice(index, 1);
+    saveCart(cart);
+    loadCart();
+  }
+
+  function placeOrder() {
+    let cart = getCart();
+    if (cart.length === 0) {
+      alert("Your cart is empty! Please add products first.");
+      return;
+    }
+
+    let name = document.getElementById('cust-name').value;
+    let phone = document.getElementById('cust-phone').value;
+    let address = document.getElementById('cust-address').value;
+
+    if (!name || !phone || !address) {
+      alert("Please fill in all required delivery details!");
+      return;
+    }
+
+    alert("Thank you " + name + "! Your order has been placed successfully.");
+    localStorage.removeItem('st_jewelers_cart');
+    window.location.href = "index.html";
+  }
+
+  window.onload = loadCart;
+</script>
+<script src="script.js"></script>
+</body>
+</html>

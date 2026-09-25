@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S.T Jewelers - Luxury Handcrafted Jewelry</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .product-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+      gap: 25px !important;
+      padding: 20px 0 !important;
+    }
+
+    .flip-card {
+      width: 100% !important;
+      height: 350px !important;
+      perspective: 1000px;
+    }
+
+    .flip-card-front img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      border-radius: 10px;
+    }
+
+    .cat-card {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <p>✨ Welcome to S.T Jewelers | Free Fast Delivery on All Orders Over RS 3,000! ✨</p>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-st">S.T</span>
+      <span class="logo-jewelers">JEWELERS</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#featured">Featured Products</a></li>
+      <li><a href="cart.html">Cart <i class="fa-solid fa-cart-shopping"></i></a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>ELEGANCE IN EVERY DETAIL</h1>
+    <p>Discover our handcrafted luxury jewelry designs created with pure perfection.</p>
+  </header>
+
+<!-- Welcome & About Section -->
+<section class="welcome-section">
+  <div class="welcome-content">
+    <h2 class="welcome-title">WELCOME TO S.T JEWELERS</h2>
+    <p class="welcome-text">
+      Where timeless elegance meets modern craftsmanship. We bring you handcrafted, high-quality jewelry designed to add charm, grace, and perfection to your special moments.
+    </p>
+  </div>
+  </section>
+ <!-- Categories Section -->
+<section id="categories">
+  <h2 class="section-title">Shop By Category</h2>
+  <div class="category-grid">
+    
+    <a href="jhumky.html" class="cat-card">Jhumky</a>
+    <a href="necklaces.html" class="cat-card">Necklaces</a>
+    <a href="bangles.html" class="cat-card">Bangles</a>
+    <a href="maang-tikka.html" class="cat-card">Maang Tikka</a>
+    <a href="rings.html" class="cat-card">Rings</a>
+    <a href="paranda.html" class="cat-card">Paranda</a>
+    <a href="earrings.html" class="cat-card">Earrings</a>
+    <a href="bracelets.html" class="cat-card">Bracelets</a>
+  </div>
+</section>
+  <!-- Features Cards -->
+   <section class="features-section">
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon">✨</span>
+      <h3>Premium Quality</h3>
+      <p>Handcrafted designs with pure attention to fine detail.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">💎</span>
+      <h3>Unique Collections</h3>
+      <p>Exclusive luxury jewelry tailored for every occasion.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🚚</span>
+      <h3>Safe Delivery</h3>
+      <p>Fast, reliable, and secure delivery straight to your door.</p>
+    </div>
+  </div>
+</section>
+  <footer>
+    <p>&copy; 2026 S.T Jewelers. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function filterCategory(category) {
+      let items = document.querySelectorAll('.product-item');
+      
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(name + " added to your cart!");
+    }
+  </script>
+
+</body>
+</html>
