@@ -585,3 +585,48 @@ th {
     box-shadow: 0 4px 10px rgba(191, 149, 63, 0.4);
     opacity: 0.9;
 }
+/* Mobile Responsive Styling */
+@media (max-width: 768px) {
+    /* Main layout and container fix */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Header & Navigation Fix */
+    header, .navbar, nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    nav a, .nav-links {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    /* Hero section & banner text */
+    .hero, .banner {
+        padding: 20px 10px;
+        text-align: center;
+    }
+
+    .hero h1, .banner h1 {
+        font-size: 22px;
+    }
+
+    /* Product Grid layout (2 items or 1 item per row) */
+    .product-grid, .grid-container, .collection-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    /* Image sizing fix */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
